@@ -1,5 +1,6 @@
 package pl.pjatk.matszo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +17,8 @@ public class myClassWithConfig {
     }
 
     @Bean
-    public List<String> defaultData(){
+    public List<String> defaultData(@Value("${my.custom.property: jakas wartosc}") String valueFromProperties){
+        System.out.println(valueFromProperties);
         return List.of("test1", "test2", "test3", "test4", "test5");
     }
 
