@@ -35,4 +35,10 @@ public class PracaDomowaController {
     public void deleteMethod(@PathVariable Integer id) {
 
     }
+
+    @DeleteMapping("/deleteMethod2/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Car> deleteMethod2(@PathVariable Integer id){
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
