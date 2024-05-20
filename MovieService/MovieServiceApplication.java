@@ -1,4 +1,4 @@
-package pl.robmic.MovieService;
+package com.example.movieservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

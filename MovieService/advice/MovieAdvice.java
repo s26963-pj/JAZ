@@ -1,11 +1,11 @@
-package pl.robmic.MovieService.advice;
+package com.example.movieservice.advice;
 
+import com.example.movieservice.exeptions.MovieNotFoundException;
+import com.example.movieservice.exeptions.MovieWrongDataException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import pl.robmic.MovieService.exeptions.MovieNotFoundException;
-import pl.robmic.MovieService.exeptions.MovieWrongDataException;
 
 @RestControllerAdvice
 public class MovieAdvice extends RuntimeException {

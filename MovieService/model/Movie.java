@@ -1,22 +1,24 @@
-package pl.robmic.MovieService.model;
+package com.example.movieservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Movie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String category;
+    @Column(nullable = false)
+    private Boolean is_available;
 
     public Movie(Long id, String name, String category) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.is_available = false;
     }
 
     public Movie() {
@@ -44,5 +46,13 @@ public class Movie {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Boolean getIs_available() {
+        return is_available;
+    }
+
+    public void setIs_available(Boolean is_available) {
+        this.is_available = is_available;
     }
 }

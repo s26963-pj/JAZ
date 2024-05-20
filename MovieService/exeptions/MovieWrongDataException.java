@@ -1,4 +1,4 @@
-package pl.robmic.MovieService.exeptions;
+package com.example.movieservice.exeptions;
 
 public class MovieWrongDataException extends RuntimeException{
     public MovieWrongDataException(String message){

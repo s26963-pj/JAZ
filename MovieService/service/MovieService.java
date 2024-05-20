@@ -1,10 +1,10 @@
-package pl.robmic.MovieService.service;
+package com.example.movieservice.service;
 
+import com.example.movieservice.exeptions.MovieWrongDataException;
+import com.example.movieservice.model.Movie;
+import com.example.movieservice.repository.MovieRepository;
 import org.springframework.stereotype.Service;
-import pl.robmic.MovieService.exeptions.MovieNotFoundException;
-import pl.robmic.MovieService.exeptions.MovieWrongDataException;
-import pl.robmic.MovieService.model.Movie;
-import pl.robmic.MovieService.repository.MovieRepository;
+import com.example.movieservice.exeptions.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +34,7 @@ public class MovieService {
         if(movie.getName() == null || movie.getCategory() == null){
             throw new MovieWrongDataException("Wrong data inserted");
         } else {
+            movie.setIs_available(false);
             movieRepository.save(movie);
             return movie;
         }
@@ -54,6 +55,17 @@ public class MovieService {
 
     public void deleteMovieById(Long id){
         movieRepository.deleteById(id);
+    }
+
+    public void changeIsAvailable(Long id){
+        Optional<Movie> movieFromDb = movieRepository.findById(id);
+        if (movieFromDb.isEmpty()){
+            throw new MovieNotFoundException("There is no movie with that id");
+        }else{
+            Movie movie = movieFromDb.get();
+            movie.setIs_available(true);
+            movieRepository.save(movie);
+        }
     }
 
 
